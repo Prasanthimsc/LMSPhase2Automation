@@ -1,0 +1,6 @@
+Feature: User/staff/admin Logout
+
+Scenario: user/staff/admin is signed into the LMS page
+Given The Browser is initiated and the user/staff/admin is in the LMS page
+When The user/staff/admin clicks the Logout button
+Then The user/staff/admin is logged and taken back to the login screen to supply a fresh set of credentials
