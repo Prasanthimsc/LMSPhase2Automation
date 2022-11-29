@@ -41,6 +41,8 @@ public class batchsteps extends baseClass
 		logger=logger.getLogger("LMSPhase2");
 		PropertyConfigurator.configure("log4j.propertiess");
 		
+		lp= new Login_Page(driver);
+		
 		
 	    
 	}
@@ -48,8 +50,7 @@ public class batchsteps extends baseClass
 	@When("user opens URL {string}")
 	public void user_opens_url(String string) {
 	
-	loginpage lp=new LoginPage();
-	lp.url();
+		lp.url();
 		
 	}
 	   
