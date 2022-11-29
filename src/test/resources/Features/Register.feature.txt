@@ -1,0 +1,96 @@
+Feature: Header validation 
+
+Scenario: Validating the heading of the Registration form 
+	Given Admin/staff/user log on to the LMS website 
+	When Admin/User/Staff lands on Registration page 
+	Then Admin/user/staff is able to view all the fields in the Registration Portal 
+	When Admin/staff/user fill in the <First Name> field with alphabet only 
+	Then Admin/staff/user should be able to see the First name 
+	When Admin/staff/user fills in the <Last Name> field with alphabet only 
+	Then Admin/staff/user should able view the Last Name 
+	When Admin/staff/user fills in the Address field with <House number> with Alphanumeric only 
+	Then Admin/staff/user should be able to see the House number 
+	When Admin/staff/user fills in the <Street Name> with alphabets only 
+	Then Admin/staff/user should able to see the Street name 
+	When Admin/staff/user fills in the <city> in alphabet only 
+	Then Admin/staff/user should able to see the City name 
+	When Admin/staff/user clicks on the dropdown from the <State> field 
+	Then A dropdown with all states are displayed 
+	When Admin/staff/user selects the appropriate option from the dropdown 
+	Then Admin/staff/user is able to see the State name 
+	When Admin/staff/user fills out the <zip> field with five digit numeric value 
+	Then Admin/staff/user could able to move to the next field 
+	When Admin/staff/user clicks the dropdown from the <Birth date> 
+	Then A dropdown calendar is displayed 
+	When Admin/staff/user clicks the correct <DOB> from the dropdown calender 
+	Then Admin/staff/user should able to see the <DOB> in the mentioned field 
+	When Admin/staff/user enters the respective <username> with aphanumeric characters 
+	Then The exact <username> name is displayed 
+	When Admin/staff/user enters the <Phone number> with ten digit numeric values 
+	Then The <phone number> should be displayed 
+	When Admin/staff/user enters the appropriate <Email id> with appropriate sign 
+	Then The right <Email id> is displayed 
+	When Admin/staff/user types in the <Password> which has 8 characters, an Upper case,a numeric value,a special character 
+	Then The should automatically able to navigate to the "Sign up" button 
+	When Admin/staff/user clicks in the Sign up button 
+	Then Admin/staff/user able to succesfully able to enter the Login page 
+	
+	
+Scenario: validating negative cerentials 
+	Given Admin/staff/user is in the Registration "URL" 
+	When Admin/staff/user enters numeric values in the <First Name> field 
+	Then The Alert message appears as "Please enter only alphabets" 
+	When Admin/staff/user skips the Address field 
+	Then The Error message appers as "Fill out the mandatory field" 
+	When Admin/staff/user tries to enter the <Zip> field without selecting the "state" 
+	Then There is a Alert mentioinig to " select the state" 
+	When The name of the city and the <Zip> code is not matched 
+	Then The Alert message comes up as "Enters the valid city for the zip" 
+	When Admin/staff/user enters the inappropriate values in the <Zip> field 
+	Then There is Alert message "Fill out the valid zip code" 
+	When Admin/staff/user enters a nine digit value in the <Phone Number> field 
+	Then There is Error message appears as "The Phone is invalid" 
+	When Admin/staff/user enters the inappropriate values in <Email> field 
+	Then The Alert message comes up as "The email is invalid" 
+	When Admin/staff/user entered the excisting <Email> 
+	Then The Alert message comes up as "The email is already registered" 
+	When Admin/staff/user enters the inappropiate values in the <password> field 
+	Then The Error message comes up as "The passoword should have 8 characters, an upper case, a numeric value, a special character" 
+	
+	
+Scenario Outline: Admin/staff/user already registered 
+	When Admin/staff/user clicks the "Log in" button on the top 
+	Then Admin/staff/user is navigated to the "Login URL" page 
+	
+	Examples: 
+	
+	|First Name | Last Name| House number| Street name | city   | state   | Zip  | Birth date| Phone Number| Email            | Password   |
+	|Meena      | Kumar    | 1896        | Cedar valley| Brandon| Florida | 90630| 11/27/86  | 2088065678  |pro.prf@gmail.com | Project*123|
+	|123456     | kumar    | 5687        | cedar valley| Brandon| Florida | 90630| 28/2/90   | 2077078969  |pro.prf@gmail.com | Project*123|
+	|Meena      | kumar    |             |             |        |         |      | 11/27/86  | 2088098678  |pro.prf@gmail.com | Project*123|
+	|Meena      | Kumar    | 11896       | Cedar valley| Brandon| Florida | 9090 | 11/27/86  | 2088065678  |pro.prf@gmail.com | Project*123|
+	|Meena      | Kumar    | 11896       | Cedar valley| Brandon|         | 90630| 11/27/86  | 2088065678  |pro.prf@gmail.com | Project*123|
+	|Meena      | Kumar    | 11896       | Cedar valley| Brandon| Florida | 9090 | 11/27/86  | 2088065678  |pro.prf@gmail.com | Project*123|
+	|Meena      | Kumar    | 11896       | Cedar valley| Brandon| Florida | 9090 | 11/27/86  | 2088065678  |pro.prf.mail.com  | Project*123|
+	|Meena      | Kumar    | 11896       | Cedar valley| Brandon| Florida | 9090 | 11/27/86  | 2088065678  |pro.prf@gmail.com | projec23   |	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
