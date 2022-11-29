@@ -50,8 +50,41 @@ public class baseClass {
 	}
 	
 	//public LoginPage lp;
-	
-	
+	@Before
+	public void setup(String br)
+		{
+			//Loading config.proeprties file
+			rb=ResourceBundle.getBundle("config");
+			
+			//Logging
+			logger=LogManager.getLogger(this.getClass());
+			
+			
+			//Driver
+			
+			if(br.equals("chrome"))
+			{
+			WebDriverManager.chromedriver().setup();
+			driver=new ChromeDriver();
+			}
+			else if(br.equals("edge"))
+			{
+				WebDriverManager.edgedriver().setup();
+				driver=new EdgeDriver();
+			}
+			else
+			{
+				WebDriverManager.chromedriver().setup();
+				driver=new ChromeDriver();
+			}
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		}
+		
+		@After
+		public void tearDown()
+		{
+			driver.quit();
+		}
 	
 	public String randomstring()
 	{
