@@ -47,23 +47,32 @@ public class batchsteps extends baseClass
 
 	@When("user opens URL {string}")
 	public void user_opens_url(String string) {
+	
+	  driver.get("https://lmsphase2hackathon.com");
 		
 	}
 	   
 
 	@And("user enters {string} and {string}")
-	public void user_enters_and(String string, String string2) {
+	public void user_enters_and(String uname, String pwd) {
+	
+	loginpage lp=new LoginPage();
+	lp.enterusername(uname);
+	lp.enterpassword(pwd);
 	   
 	}
 
 	@And("clicks Login button")
 	public void clicks_login_button() {
+	 lp.clicklogin();
 	    
 	}
 
 	@Then("home page is displayed")
 	public void home_page_is_displayed() {
-	   
+	
+	   homepage hp=new HomePage();
+	   hp.gethomeheader();
 	}
 	
 	/****  Scenario: Validating the Manage Batch Header   ****/
