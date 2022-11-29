@@ -49,7 +49,7 @@ public class baseClass {
 		driver = getDriver();
 	}
 	
-	//public LoginPage lp;
+	/* /
 	@Before
 	public void setup(String br)
 		{
@@ -84,7 +84,7 @@ public class baseClass {
 		public void tearDown()
 		{
 			driver.quit();
-		}
+		}   */
 	
 	public String randomstring()
 	{
