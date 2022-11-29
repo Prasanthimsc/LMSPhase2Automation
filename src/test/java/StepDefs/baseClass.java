@@ -37,12 +37,12 @@ public class baseClass {
 	public static WebDriver driver;
 	public static RegisterPage rp;
 	public static Login_Page lp;
-	public static Logout_Page;
+	public static Logout_Page lg;
 	public static ProgramPage pp;
 	public static User_Page up;
-    public Attendance_page ap;
-    public User_page up;
-    public AssignmentPage Asp;
+        public Attendance_page ap;
+        public User_page up;
+        public AssignmentPage Asp;
     
         
 	static {
