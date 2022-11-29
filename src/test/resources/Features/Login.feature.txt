@@ -1,0 +1,182 @@
+
+Feature: Login cerentials
+
+
+Background: Validates the login url
+Given Admin/User/Staff is on Browser
+When Admin/User/Staff opens the LMS website  
+Then Admin/user/Staff should be navigated to login page
+
+Scenario Outline: Login with valid credentials
+Given User is on Login Page
+When User clicks login button after entering <Username> and <Password>
+Then User see header text as "Manage Program"
+
+Examples:
+|Username  |Password   |
+|Anglesland|Project*134|
+
+Scenario Outline: Admin/Staff login with valid credentials
+Given Admin/staff is on Login Page
+When Admin/Staff clicks login Button after entering <Username> , <Password> , <code>
+Then Admin/Staff see header text as "Manage Program"
+
+Examples:
+|Username  |Password   |code|
+|Anglesland|Project*134|6789|
+
+Scenario Outline: User login with valid username and invalid password
+Given User is on Login Page
+When User clicks login button after entering valid <Username> and invalid <Password>
+Then User should see a error message "Entered invalid password"
+
+Examples:
+|Username  |Password|
+|Anglesland|567     |
+
+Scenario Outline: User login with invalid username and invalid password
+Given User is on Login Page
+When User clicks login button after entering Invalid <Username> and invalid <Password>
+Then User should see a error message "The username and password are incorrect"
+
+Examples:
+|Username|Password|
+|679     | 78     |
+
+Scenario Outline: User login with valid username and leaves password empty
+Given User is on Login Page
+When User clicks login button after entering valid <Username> and leaves <Password> field empty
+Then It should show error message "enter valid password"
+
+Examples:
+|Username  |Password|
+|AnglesLand|        |
+
+Scenario Outline: Admin/Staff with valid username,invalid password,code
+Given Admin/Staff is on Login Page
+When Admin/Staff clicks login button after entering valid <username> invalid <Password> and <code>
+Then Admin/Staff should see a error message "Entered invalid password"
+
+Examples:
+|username  |password |code|
+|AnglesLand|34       |5678|
+
+Scenario Outline: Admin/Staff with invalid username,valid password,code
+Given Admin/Staff on Login Page
+When Admin/Staff clicks login button after entering invalid <Username> , valid <Password> and <code>
+Then Admin/Staff should get a error message "Entered invalid username"
+
+Examples:
+|Username|Password |code|
+|78      |Project*1|7867|
+
+Scenario Outline: Admin/Staff with valid username,valid password without code
+Given Admin/Staff in Login Page
+When Admin/Staff clicks login button after entering invalid <Username> ,valid <Password> and without <code>
+Then Admin/Staff should find error message "The code is required"
+
+Examples:
+|Username  |Password   |code|
+|89        |Project*134|    |
+
+Scenario Outline: Validate forgot password link
+Given Admin/User/Staff is on Login Page
+When Admin/User/Staff clicks "Forgot Password" link
+Then Dispalys a text box enter the <Email> id
+When Admin/User/Staff clicks continue after entering valid <Email> address  
+Then Admin/User/Staff should be redirected to "verification code page" and verification code will be sent to email
+
+Examples:
+|Email               | verification code |
+|angles.Prf@gmail.com| 2345              |
+
+Scenario Outline: Validate verifiction code
+Given Admin/User/Staff is on enter verification code Page
+When Admin/User/Staff clicks continue after entering <verification code>
+Then Admin/User/Staff should be redirected "reset password" page
+
+Examples:
+|verification code|
+|2345             |
+
+Scenario: Validate click here link in verification code page
+Given Admin/User/Staff is on enter verification code Page
+When Admin/User/Staff clicks "Click here" link to resend
+Then The "verification code" should be resend to email 
+
+ Scenario Outline: Validate Reset password
+Given Admin/User/Staff is on Reset Password Page
+When Admin/User/Staff clicks submit button after entering <New password> and <retype password>
+Then Admin/User/Staff should be redirected to login page
+
+Examples:
+| New password  | retype password |
+| Angles*34     | Angles*34       |
+
+Scenario Outline: Validate Reset password on mismatch
+Given Admin/User/Staff is on Reset Password Page
+When Admin/User/Staff clicks submit button after entering <New password> and <retype password> 
+Then Admin/User/Staff should see an error message "password and retype password are mismatched"
+
+Examples:
+| New password  | retype password  |
+| Angles*34     | Project&34       |
+
+Scenario Outline: Validate Reset password with less than eight characters
+Given Admin/User/Staff is on Reset Password Page
+When Admin/User/Staff clicks submit button after entering <Password> with less than eight characters
+Then It should display an error message "The password must contain 8 characters"
+
+Examples:
+|password|
+|Trip81  |
+
+Scenario Outline: Validate Reset password without capital letter
+Given Admin/User/Staff is on Reset Password Page
+When Admin/User/Staff clicks submit button after entering <Password> without Capital letter 
+Then It should display an error message "The password must contain one Capital letter"
+
+Examples:
+|password  |
+|trip@081  |
+
+Scenario Outline: Validate Reset password without number
+Given Admin/User/Staff is on Reset Password Page
+When Admin/User/Staff clicks submit button after entering <Password> without Number
+Then It should display an error message "The password must contain one Number"
+
+Examples:
+|password  |
+|Trip      |
+
+Scenario: Validate Reset password without special character
+Given Admin/User/Staff is on Reset Password Page
+When Admin/User/Staff clicks submit button after entering password without Special character
+Then It should display an error message "The password must contain one Special character"
+
+Scenario Outline: Validate Reset password with cancel button
+Given Admin/User/Staff is on Reset Password Page
+When Admin/User/Staff clicks cancel button after entering <New password> and <retype password> 
+Then Admin/User/Staff should see a refreshed reset password page with empty fields
+
+Examples:
+| New Password | retype password |
+| Trip*123     | Trip*123        |
+
+
+
+
+	  
+ 
+
+ 
+
+ 
+
+
+ 
+
+
+
+
+
