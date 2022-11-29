@@ -20,9 +20,13 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.0.0-M5</version>
            <configuration>
-           		 <source>1.8</source>
-           		 <target>1.8</target>	
-           		 <encoding>UTF-8</encoding>
+   					<includes>
+						<include>**/ParallelRun.java</include>
+					</includes>
+					<parallel>methods</parallel>
+					<threadCount>4</threadCount>
+					<useUnlimitedThreads>false</useUnlimitedThreads>
+				
           </configuration>
         </plugin>
         
