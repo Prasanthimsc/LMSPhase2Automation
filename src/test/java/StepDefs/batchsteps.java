@@ -34,21 +34,22 @@ public class batchsteps extends baseClass
 	@Given("user launches chrome browswer")
 	public void user_launches_chrome_browswer() throws IOException {
 		
-		configprop=new Properties();
-		FileInputStream configpropfile=new FileInputStream("config.properties");
-		configprop.load(configpropfile);
+		//configprop=new Properties();
+		//FileInputStream configpropfile=new FileInputStream("config.properties");
+		//configprop.load(configpropfile);
 		
 		logger=logger.getLogger("LMSPhase2");
 		PropertyConfigurator.configure("log4j.propertiess");
 		
-		System.setProperty("webdriver.chrome.driver",configprop.getProperty("chromepath"));
+		
 	    
 	}
 
 	@When("user opens URL {string}")
 	public void user_opens_url(String string) {
 	
-	  driver.get("https://lmsphase2hackathon.com");
+	loginpage lp=new LoginPage();
+	lp.url();
 		
 	}
 	   
@@ -56,7 +57,7 @@ public class batchsteps extends baseClass
 	@And("user enters {string} and {string}")
 	public void user_enters_and(String uname, String pwd) {
 	
-	loginpage lp=new LoginPage();
+	
 	lp.enterusername(uname);
 	lp.enterpassword(pwd);
 	   
