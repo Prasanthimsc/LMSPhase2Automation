@@ -34,6 +34,14 @@
     </pluginManagement>
   </build>
   
+  
+	<repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+  
   <dependencies>
   
     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
@@ -86,7 +94,6 @@
 	</dependency>
 	
 
-
 <dependency>
     <groupId>com.sun</groupId>
     <artifactId>tools</artifactId>
@@ -94,6 +101,13 @@
     <scope>system</scope>
     <systemPath>C:\Program Files\Java\jdk1.8.0_202\lib\tools.jar</systemPath>
 </dependency>
+
+<dependency>
+        <groupId>com.github.ralfstuckert.pdfbox-layout</groupId>
+        <artifactId>pdfbox2-layout</artifactId>
+        <version>1.0.1</version>
+    </dependency>
+
   
   
   </dependencies>
